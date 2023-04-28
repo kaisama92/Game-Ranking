@@ -1,0 +1,17 @@
+What Api's do I want to use?
+  * IGDB(Twitch API)
+  * RAWG?
+
+What language do I want to code my program in?
+    C#
+    JavaScript
+    TypeScript
+
+What is my MVP:
+    My Minimum Viable Product will rank games based on users giving the game a score of 1-10 after viewing prices, ratings, and descriptions of the games. It will also show a personalized list of games (specifically a list of games that the user has rated).
+
+Friday April 28
+  * Figure out which API's I want to use.
+  * Figure out how I want to store my data.(MySQL?)
+  * Determine if I want to just create an API that can be used by discord, or if I want to create that plus a client side application.
+
