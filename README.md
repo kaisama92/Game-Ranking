@@ -7,3 +7,6 @@
 * 11:00 Creating Database to store API Information using MySQL
 * 1:00 Researching Typescript For my Project (Reading through documentation/TypeScript Handbook)
 * 4:45 submitting work
+
+#### Friday 5/5
+* 8:00 Researching Typescript
