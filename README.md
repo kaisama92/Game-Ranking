@@ -11,3 +11,4 @@
 #### Friday 5/5
 * 8:00 Researching Typescript
 * 4:30 Researching how to use Typescript with an ASP.Net application
+* 4:50 Figuring out how to set up file structure for a REACT application that uses Typescript.
