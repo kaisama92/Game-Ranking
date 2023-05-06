@@ -21,3 +21,6 @@ game-ranker/.env.production.local
 game-ranker/npm-debug.log*
 game-ranker/yarn-debug.log*
 game-ranker/yarn-error.log*
+
+# CRA README.md
+game-ranker/README.md
