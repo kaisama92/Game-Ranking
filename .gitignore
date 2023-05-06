@@ -1,0 +1,23 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+game-ranker/node_modules
+game-ranker/.pnp
+game-ranker/.pnp.js
+
+# testing
+game-ranker/coverage
+
+# production
+game-ranker/build
+
+# misc
+game-ranker/.DS_Store
+game-ranker/.env.local
+game-ranker/.env.development.local
+game-ranker/.env.test.local
+game-ranker/.env.production.local
+
+game-ranker/npm-debug.log*
+game-ranker/yarn-debug.log*
+game-ranker/yarn-error.log*
