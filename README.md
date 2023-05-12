@@ -15,4 +15,4 @@
 * 5:10 Used CRA to create a react app using a typescript template.
 
 #### Friday 5/12
-* 8:00 Looking at previous program structures
+* 8:00 Looking at previous program structures/ Troubleshooting Internet
