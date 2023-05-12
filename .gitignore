@@ -24,3 +24,6 @@ game-ranker/yarn-error.log*
 
 # CRA README.md
 game-ranker/README.md
+
+# Environment 
+.env
