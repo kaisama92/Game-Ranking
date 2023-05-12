@@ -22,7 +22,7 @@ const ListOfGames: React.FC = () : ReactElement => {
       let results: Game [] = [];
 
       while (currentPage <= totalPages) {
-        const response = await fetch()
+        const response = await fetch(`https://api.rawg.io/api/games?key=${process.env.REACT_APP_API_KEY}&platform=4&tags=multiplayer`)
       }
     }
   })
