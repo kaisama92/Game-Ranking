@@ -4,6 +4,7 @@ import { collection, addDoc } from "firebase/firestore";
 
 interface Game {
   name: string;
+  genre: [] | undefined
 }
 
 const ListOfGames: React.FC = () : ReactElement => {
@@ -34,7 +35,8 @@ const ListOfGames: React.FC = () : ReactElement => {
       <ol>
         {gamesList.map((game, index) => (
           <li key={index}>
-            <h3>{game.name}</h3>
+            <h3>{game.name}+{}</h3>
+            <button>Hello</button>
           </li>
         ))}
       </ol>
