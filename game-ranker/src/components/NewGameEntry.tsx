@@ -1,9 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types"
 
-interface Game {
+export interface dbGameEntry {
   name: string 
+  slug: string
   upvotes: number
   downvotes: number
-  
+  metacritic: number
+
+}
+
+export interface currentlyVisibleStateProps {
+  changeCurrentlyVisibleState?: () => void;
 }

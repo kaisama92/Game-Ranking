@@ -1,70 +1,38 @@
-import React, { FormEvent, FormEventHandler, ReactElement, useEffect, useState } from "react";
-import db from "../firebase";
-import { collection, addDoc } from "firebase/firestore";
+import React, { ReactElement, useEffect, useState } from "react";
+import SearchForGame from "./SearchForGame";
+import GameList from "./GameList";
 
-interface Game {
+export interface Game {
   name: string;
   slug: string;
-}
-
-interface searchFor {
-  name: string;
-  slug: string;
-}
-
-interface search {
-  search: string;
+  upvotes: number;
+  downvotes: number;
+  metacritic: number;
 }
 
 const ListOfGames: React.FC = () : ReactElement => {
   const urlBase: string = `https://api.rawg.io/api/games?key=${process.env.REACT_APP_API_KEY}&platform=4`
-  const [gamesList, setGamesList] = useState<Game[]>([]);
-  const [searchList, setSearchList] = useState<searchFor[]>([]);
 
-  // useEffect((): void => {
-  //   fetch(`https://api.rawg.io/api/games?key=${process.env.REACT_APP_API_KEY}&platform=4&page_size=40`)
-  //       .then(response => response.json())
-  //       .then((jsonifiedResponse) => {
-  //         setGamesList(jsonifiedResponse.results);
-  //       });
-  // }, []);
+  const [currentlyVisibleState, setCurrentlyVisibleState] = useState(<SearchForGame/>);
+  const [ searchVisible, setSearchVisible ] = useState(true)
 
-  const searchForGame = (query: string): void => {
-    fetch(`${urlBase}&search=${query}`)
-        .then(response => response.json())
-        .then((jsonifiedResponse): void => {
-          setSearchList(jsonifiedResponse.results);
-        })
+  const changeCurrentlyVisibleState = () : void => {
+    console.log("trying to change visible state")
+    if (currentlyVisibleState === <SearchForGame/>){
+      setCurrentlyVisibleState(<GameList/>);
+    }
+    setSearchVisible(!searchVisible);
   }
 
-  const handleFormSubmission = (event: FormEvent): void => {
-    event.preventDefault();
-    const {target} = event;
-    if (target) {
-      fetch(`${urlBase}&search=${(target as HTMLFormElement).search.value}&exclude_additions=true`)
-      .then(response => response.json())
-      .then((jsonifiedResponse): void => {
-        setSearchList(jsonifiedResponse.results);
-      })
-    }
-  } 
+  useEffect(() => {
+    console.log("Visible State Updated")
+  }, [searchVisible]);
+
 
   return (
     <React.Fragment>
-      <form onSubmit={handleFormSubmission}>
-        <input 
-          type="text"
-          name="search"
-          placeholder="Search For Game Here"/>
-        <button type="submit">Search</button>
-      </form>
-      <ol>{searchList.map((game, index) => (
-          <li key={index}>
-            <h3>{game.name}
-            </h3>
-          </li>
-        ))}
-      </ol>
+      <button onClick={() => changeCurrentlyVisibleState} >See List Of Games</button>
+      {currentlyVisibleState}
     </React.Fragment>
   )
 }
