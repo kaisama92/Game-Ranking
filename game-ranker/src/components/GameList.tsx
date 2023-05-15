@@ -1,14 +1,49 @@
-import React, { ReactElement, useState } from "react";
-import {dbGameEntry, currentlyVisibleStateProps} from "./NewGameEntry";
+import React, { ReactElement, useEffect, useState } from "react";
+import {dbGameEntry} from "./NewGameEntry";
+import { collection, addDoc, onSnapshot } from "firebase/firestore";
+import db from "../firebase";
 
 
 
 const GameList : React.FC = () : ReactElement => {
   const [gameList, setGameList] = useState<dbGameEntry[]>([])
 
+  useEffect(() => {
+    const unSubscribe = onSnapshot(
+      collection(db, "games"), 
+      (collectionSnapshot) => {
+        let games : dbGameEntry[] = [];
+        collectionSnapshot.forEach((doc) => {
+          games.push({
+            name: doc.data().name,
+            slug: doc.data().slug,
+            upvotes: doc.data().upvotes,
+            downvotes: doc.data().downvotes,
+            metacritic: doc.data().metacritic,
+            id: doc.id
+          });
+        });
+        setGameList(games);
+      },
+      (error) => {
+        // do something with error
+      }
+    );
+    return () => unSubscribe();
+  }, []);
+
   return(
     <React.Fragment>
-      <h4>Hello</h4>
+      <ul>
+        {gameList.map((game,index) => (
+          <li key= {index}>
+            <h3>{game.name}</h3>
+            <p>{"Upvotes: " + game.upvotes}</p>
+            <p>{"Downvotes: " + game.downvotes}</p>
+            <p>{"Metacritic Score: " + game.metacritic}</p>
+          </li>
+        ))}
+      </ul>
     </React.Fragment>
   )
 }

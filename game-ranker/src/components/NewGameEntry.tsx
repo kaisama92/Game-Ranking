@@ -7,9 +7,11 @@ export interface dbGameEntry {
   upvotes: number
   downvotes: number
   metacritic: number
-
+  id?: string
 }
 
-export interface currentlyVisibleStateProps {
-  changeCurrentlyVisibleState?: () => void;
+export interface searchFor {
+  name: string;
+  slug: string;
+  metacritic: number;
 }

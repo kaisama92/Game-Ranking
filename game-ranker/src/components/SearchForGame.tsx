@@ -1,17 +1,9 @@
 import React, {useState, FormEvent, ReactElement, useEffect} from "react";
-import {Game} from "./ListOfGames";
-import ListOfGames from "./ListOfGames";
-import {dbGameEntry, currentlyVisibleStateProps} from "./NewGameEntry";
+import {dbGameEntry, searchFor} from "./NewGameEntry";
 import db from "../firebase";
 import { collection, addDoc } from "firebase/firestore";
 
 const SearchForGame: React.FC = (): ReactElement => {
-
-  interface searchFor {
-    name: string;
-    slug: string;
-    metacritic: number;
-  }
 
   const [game, setGame] = useState<dbGameEntry>()
   const [searchList, setSearchList] = useState<searchFor[]>([]);

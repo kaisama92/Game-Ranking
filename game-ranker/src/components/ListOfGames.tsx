@@ -48,6 +48,7 @@ const ListOfGames: React.FC = () : ReactElement => {
 
   return (
     <React.Fragment>
+      <GameList />
       <button onClick={() => buttonClick()} >{buttonText}</button>
       {currentlyVisibleState}
     </React.Fragment>
