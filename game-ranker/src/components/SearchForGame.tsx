@@ -38,7 +38,6 @@ const SearchForGame: React.FC = (): ReactElement => {
     setGame({name: name, slug: slug, upvotes: 1, downvotes: 0, metacritic: metacritic});
   }
 
-  
   return (
     <React.Fragment>
       <form onSubmit={handleFormSubmission}>
