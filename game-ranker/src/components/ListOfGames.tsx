@@ -16,11 +16,12 @@ const ListOfGames: React.FC = () : ReactElement => {
   const [currentlyVisibleState, setCurrentlyVisibleState] = useState<JSX.Element>();
   const [ searchVisible, setSearchVisible ] = useState(true);
   const [ counter, setCounter ] = useState(0);
+  const [ buttonText, setButtonText ] = useState("See List Of Games")
 
 
   const changeCurrentlyVisibleState = () : void => {
     console.log("trying to change visible state" + currentlyVisibleState)
-    if (searchVisible){
+    if (!searchVisible){
       setCurrentlyVisibleState(<SearchForGame/>);
     } else {
       setCurrentlyVisibleState(<GameList />)
@@ -31,6 +32,11 @@ const ListOfGames: React.FC = () : ReactElement => {
     setCounter(counter + 1);
     changeCurrentlyVisibleState();
     setSearchVisible(!searchVisible);
+    if (buttonText === "See List Of Games") {
+      setButtonText("Search For Games");
+    } else {
+      setButtonText("See List Of Games");
+    }
   }
 
   useEffect(() => {
@@ -38,11 +44,11 @@ const ListOfGames: React.FC = () : ReactElement => {
     if (counter !== undefined && counter === 0) {
       setCurrentlyVisibleState(<SearchForGame/>)
     }
-  }, [searchVisible]);
+  }, [counter, searchVisible]);
 
   return (
     <React.Fragment>
-      <button onClick={() => buttonClick()} >See List Of Games</button>
+      <button onClick={() => buttonClick()} >{buttonText}</button>
       {currentlyVisibleState}
     </React.Fragment>
   )
