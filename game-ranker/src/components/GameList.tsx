@@ -8,14 +8,7 @@ const GameList : React.FC = () : ReactElement => {
 
   return(
     <React.Fragment>
-      {gameList.map((game, index) => (
-        <li key={index} >
-          <h3>{game.name}</h3>
-          <p>{game.upvotes}</p>
-          <p>{game.downvotes}</p>
-          <p>{game.metacritic}</p>
-        </li>
-      ))}
+      <h4>Hello</h4>
     </React.Fragment>
   )
 }

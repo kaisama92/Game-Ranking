@@ -13,25 +13,36 @@ export interface Game {
 const ListOfGames: React.FC = () : ReactElement => {
   const urlBase: string = `https://api.rawg.io/api/games?key=${process.env.REACT_APP_API_KEY}&platform=4`
 
-  const [currentlyVisibleState, setCurrentlyVisibleState] = useState(<SearchForGame/>);
-  const [ searchVisible, setSearchVisible ] = useState(true)
+  const [currentlyVisibleState, setCurrentlyVisibleState] = useState<JSX.Element>();
+  const [ searchVisible, setSearchVisible ] = useState(true);
+  const [ counter, setCounter ] = useState(0);
+
 
   const changeCurrentlyVisibleState = () : void => {
-    console.log("trying to change visible state")
-    if (currentlyVisibleState === <SearchForGame/>){
-      setCurrentlyVisibleState(<GameList/>);
+    console.log("trying to change visible state" + currentlyVisibleState)
+    if (searchVisible){
+      setCurrentlyVisibleState(<SearchForGame/>);
+    } else {
+      setCurrentlyVisibleState(<GameList />)
     }
+  }
+
+  const buttonClick = () : void => {
+    setCounter(counter + 1);
+    changeCurrentlyVisibleState();
     setSearchVisible(!searchVisible);
   }
 
   useEffect(() => {
-    console.log("Visible State Updated")
+    console.log(`search change ${counter} ${searchVisible}`);
+    if (counter !== undefined && counter === 0) {
+      setCurrentlyVisibleState(<SearchForGame/>)
+    }
   }, [searchVisible]);
-
 
   return (
     <React.Fragment>
-      <button onClick={() => changeCurrentlyVisibleState} >See List Of Games</button>
+      <button onClick={() => buttonClick()} >See List Of Games</button>
       {currentlyVisibleState}
     </React.Fragment>
   )
