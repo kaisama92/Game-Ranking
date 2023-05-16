@@ -2,6 +2,7 @@ import React, { ReactElement, useEffect, useState } from "react";
 import SearchForGame from "./SearchForGame";
 import GameList from "./GameList";
 import { getAuth } from "firebase/auth"
+import BaseModalWrapper from "./ModalPopup/BaseModalWrapper";
 
 export interface Game {
   name: string;
@@ -43,8 +44,8 @@ const ListOfGames: React.FC = () : ReactElement => {
 
   return (
     <React.Fragment>
-      <button>Show Modal</button>
-      <BaseModalWrapper /> 
+      <button onClick={toggleModal}>Show Modal</button>
+      <BaseModalWrapper isModalVisible={isModalVisible} onBackdropClick={toggleModal}/> 
       <GameList />
       {/* <button onClick={() => buttonClick()} >{buttonText}</button> */}
       {currentlyVisibleState}
