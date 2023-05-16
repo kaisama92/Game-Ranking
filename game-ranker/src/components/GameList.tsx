@@ -1,6 +1,6 @@
 import React, { ReactElement, useEffect, useState } from "react";
 import {dbGameEntry} from "./NewGameEntry";
-import { collection, addDoc, onSnapshot } from "firebase/firestore";
+import { collection, addDoc, onSnapshot, deleteDoc, doc } from "firebase/firestore";
 import db from "../firebase";
 
 
@@ -32,6 +32,9 @@ const GameList : React.FC = () : ReactElement => {
     return () => unSubscribe();
   }, []);
 
+  const deleteEntry = async (id: string) => {
+    await deleteDoc(doc(db, "games", id));
+  }
   return(
     <React.Fragment>
       <ul>
@@ -41,6 +44,7 @@ const GameList : React.FC = () : ReactElement => {
             <p>{"Upvotes: " + game.upvotes}</p>
             <p>{"Downvotes: " + game.downvotes}</p>
             <p>{"Metacritic Score: " + game.metacritic}</p>
+            <button onClick={() => deleteEntry(game.id!)} >Delete</button>
           </li>
         ))}
       </ul>

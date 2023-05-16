@@ -1,7 +1,7 @@
 import React, {useState, FormEvent, ReactElement, useEffect} from "react";
 import {dbGameEntry, searchFor} from "./NewGameEntry";
 import db from "../firebase";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, updateDoc, doc } from "firebase/firestore";
 
 const SearchForGame: React.FC = (): ReactElement => {
 
