@@ -3,9 +3,16 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 const registerForAccount : React.FC = () : ReactElement => {
 
-  const handleRegistration = (email: string, password: string ) : void => {
+  const handleRegistration = (event: FormEvent ) : void => {
+    event.preventDefault();
+    const { target } = event;
     const auth = getAuth();
-    createUserWithEmailAndPassword(auth, email, password)
+    if (target) {
+      createUserWithEmailAndPassword(auth, target.email, target.password)
+          .then((userCredential) => {
+            const user = userCredential.user;
+          })
+    }
   }
 
   return (
