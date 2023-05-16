@@ -32,7 +32,7 @@ const SearchForGame: React.FC = (): ReactElement => {
     if (game !== undefined){
       addGameToDB(game);
     }
-  })
+  }, [game]) 
     
   const addGameToList = (name: string, slug: string, metacritic: number): void => {
     setGame({name: name, slug: slug, upvotes: 1, downvotes: 0, metacritic: metacritic});
