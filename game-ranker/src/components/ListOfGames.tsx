@@ -1,6 +1,7 @@
 import React, { ReactElement, useEffect, useState } from "react";
 import SearchForGame from "./SearchForGame";
 import GameList from "./GameList";
+import { getAuth } from "firebase/auth"
 
 export interface Game {
   name: string;
@@ -28,16 +29,16 @@ const ListOfGames: React.FC = () : ReactElement => {
     }
   }
 
-  const buttonClick = () : void => {
-    setCounter(counter + 1);
-    changeCurrentlyVisibleState();
-    setSearchVisible(!searchVisible);
-    if (buttonText === "See List Of Games") {
-      setButtonText("Search For Games");
-    } else {
-      setButtonText("See List Of Games");
-    }
-  }
+  // const buttonClick = () : void => {
+  //   setCounter(counter + 1);
+  //   changeCurrentlyVisibleState();
+  //   setSearchVisible(!searchVisible);
+  //   if (buttonText === "See List Of Games") {
+  //     setButtonText("Search For Games");
+  //   } else {
+  //     setButtonText("See List Of Games");
+  //   }
+  // }
 
   useEffect(() => {
     console.log(`search change ${counter} ${searchVisible}`);
