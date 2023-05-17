@@ -4,6 +4,7 @@ import GameList from "./GameList";
 import { getAuth } from "firebase/auth"
 import BaseModalWrapper from "./ModalPopup/BaseModalWrapper";
 
+
 export interface Game {
   name: string;
   slug: string;
@@ -45,7 +46,7 @@ const ListOfGames: React.FC = () : ReactElement => {
   return (
     <React.Fragment>
       <button onClick={toggleModal}>Show Modal</button>
-      <BaseModalWrapper isModalVisible={isModalVisible} onBackdropClick={toggleModal}/> 
+      <BaseModalWrapper header="Login" isModalVisible={isModalVisible} onBackdropClick={toggleModal}/> 
       <GameList />
       {/* <button onClick={() => buttonClick()} >{buttonText}</button> */}
       {currentlyVisibleState}
