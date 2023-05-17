@@ -46,7 +46,7 @@ const ListOfGames: React.FC = () : ReactElement => {
   return (
     <React.Fragment>
       <button onClick={toggleModal}>Show Modal</button>
-      <BaseModalWrapper header="Login" isModalVisible={isModalVisible} onBackdropClick={toggleModal}/> 
+      <BaseModalWrapper message="Please Log In" header="Login" isModalVisible={isModalVisible} onBackdropClick={toggleModal}/> 
       <GameList />
       {/* <button onClick={() => buttonClick()} >{buttonText}</button> */}
       {currentlyVisibleState}

@@ -60,3 +60,11 @@ code {
   align-items: center;
   justify-content: center;
 }
+
+.message {
+  color: #aaa;
+  font-size: 15px;
+  font-weight: 300px;
+  margin: 0 0 36px;
+  text-align: center;
+}
