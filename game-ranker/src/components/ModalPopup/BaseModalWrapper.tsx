@@ -2,15 +2,16 @@ import React, { ReactNode } from "react";
 import Modal from "./Modal";
 
 interface BaseModalWrapperProps {
-  isModalVisible: boolean;
+  isModalVisible?: boolean;
   onBackdropClick: () => void;
   header: string;
   message?: string;
   content?: ReactNode;
+  isRegisterModalVisible?: boolean;
 }
 
-const BaseModalWrapper: React.FC<BaseModalWrapperProps> = ({content, onBackdropClick, isModalVisible, header, message}) => {
-  if(!isModalVisible) {
+const BaseModalWrapper: React.FC<BaseModalWrapperProps> = ({content, isRegisterModalVisible, onBackdropClick, isModalVisible, header, message}) => {
+  if(!isModalVisible && !isRegisterModalVisible) {
     return null;
   }
   return (<Modal onBackdropClick={onBackdropClick}>

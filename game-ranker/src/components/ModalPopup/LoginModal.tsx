@@ -9,14 +9,16 @@ interface LoginArgs {
 interface LoginModalProps {
   onBackdropClick: () => void;
   isModalVisible: boolean;
+  isRegisterModalVisible?: boolean;
   loginError?: string;
   onLoginRequested: LoginFunction;
+  toggleRegisterModal: () => void;
 }
 
 export type LoginFunction = (args: LoginArgs) => Promise<void>;
 
 
-const LoginModal: React.FC<LoginModalProps> = ({loginError, isModalVisible, onBackdropClick, onLoginRequested}) => {
+const LoginModal: React.FC<LoginModalProps> = ({loginError, isRegisterModalVisible, isModalVisible, onBackdropClick, onLoginRequested, toggleRegisterModal}) => {
 
   const [ login, setLogin ] = useState('');
   const [ password, setPassword ] = useState('');
@@ -26,10 +28,15 @@ const LoginModal: React.FC<LoginModalProps> = ({loginError, isModalVisible, onBa
       onLoginRequested({login, password});
     }
   }
+  const registerToggle = () => {
+    toggleRegisterModal();
+    onBackdropClick();
+  }
 
   return (<BaseModalWrapper 
     onBackdropClick={onBackdropClick}
     isModalVisible={isModalVisible}
+    isRegisterModalVisible={isRegisterModalVisible}
     header="Login"
     message="Please log in"
     content={
@@ -38,7 +45,7 @@ const LoginModal: React.FC<LoginModalProps> = ({loginError, isModalVisible, onBa
         <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} onKeyDown={onKeyDown} /><br/>
         {loginError && <div className="error">{loginError}</div>}
         <button className="center" onClick={() => onLoginRequested({password, login})} >Login</button>
-        <button >Or Register</button>
+        <button onClick={() => registerToggle()}>Or Register</button>
       </>
     }
   />);
