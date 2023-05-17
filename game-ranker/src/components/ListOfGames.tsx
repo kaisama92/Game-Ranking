@@ -2,7 +2,7 @@ import React, { ReactElement, useEffect, useState } from "react";
 import SearchForGame from "./SearchForGame";
 import GameList from "./GameList";
 import { getAuth } from "firebase/auth"
-import BaseModalWrapper from "./ModalPopup/BaseModalWrapper";
+import LoginModal, { LoginFunction } from "./ModalPopup/LoginModal";
 
 
 export interface Game {
@@ -21,6 +21,7 @@ const ListOfGames: React.FC = () : ReactElement => {
   const [ counter, setCounter ] = useState(0);
   const [ buttonText, setButtonText ] = useState("See List Of Games");
   const [ isModalVisible, setIsModalVisible ] = useState(false);
+  
 
 
   const changeCurrentlyVisibleState = () : void => {
@@ -36,6 +37,14 @@ const ListOfGames: React.FC = () : ReactElement => {
     setIsModalVisible(!isModalVisible)
   }
 
+  const onBackdropClick = () => {
+    setIsModalVisible(false);
+  }
+
+  const onLoginRequest : LoginFunction = async ({password, login}) => {
+    console.log(password, login)
+  }
+
   useEffect(() => {
     console.log(`search change ${counter} ${searchVisible}`);
     if (counter !== undefined && counter === 0) {
@@ -46,7 +55,7 @@ const ListOfGames: React.FC = () : ReactElement => {
   return (
     <React.Fragment>
       <button onClick={toggleModal}>Show Modal</button>
-      <BaseModalWrapper message="Please Log In" header="Login" isModalVisible={isModalVisible} onBackdropClick={toggleModal}/> 
+      <LoginModal onBackdropClick={onBackdropClick} onLoginRequested={onLoginRequest} isModalVisible={isModalVisible}/> 
       <GameList />
       {/* <button onClick={() => buttonClick()} >{buttonText}</button> */}
       {currentlyVisibleState}

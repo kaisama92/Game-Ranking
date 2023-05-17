@@ -9,7 +9,7 @@ interface BaseModalWrapperProps {
   content?: ReactNode;
 }
 
-const BaseModalWrapper: React.FC<BaseModalWrapperProps> = ({onBackdropClick, isModalVisible, header, message}) => {
+const BaseModalWrapper: React.FC<BaseModalWrapperProps> = ({content, onBackdropClick, isModalVisible, header, message}) => {
   if(!isModalVisible) {
     return null;
   }
@@ -17,6 +17,7 @@ const BaseModalWrapper: React.FC<BaseModalWrapperProps> = ({onBackdropClick, isM
     <h3 className="desktopModalContainer" >
       <p className="modalInfo">{header}</p>
       {message && <p className="message">{message}</p>}
+      {content}
     </h3>
   </Modal>);
 }

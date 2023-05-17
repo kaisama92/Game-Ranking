@@ -68,3 +68,14 @@ code {
   margin: 0 0 36px;
   text-align: center;
 }
+
+.whiteText {
+  color: #aaa;
+}
+
+.center {
+  margin: 0 0 36px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
