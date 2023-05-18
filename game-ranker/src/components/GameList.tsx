@@ -69,14 +69,19 @@ const GameList : React.FC<gameListProps> = ({user}) : ReactElement => {
       console.log("scenario1")
       upvoteName = user;
     } else if (hasUpvoted === "None Have Voted") {
+      console.log("scenario2")
       addUpvote = 1;
       upvoteName = user;
     } else if (!hasUpvoted.includes(user) ){
+      console.log("scenario3")
       addUpvote = 1;
       upvoteName = hasUpvoted + user;
     } else if (hasUpvoted.includes(user) || hasUpvoted === user ){
+      console.log("scenario4")
+      addUpvote = 0;
       setError(`You have already upvoted ${name}`)
     }
+    console.log(addUpvote);
     const gameToEdit = {
     name: name,
     slug: slug, 
@@ -97,7 +102,6 @@ const GameList : React.FC<gameListProps> = ({user}) : ReactElement => {
     let upvoteName: string = hasUpvoted;
     let downvoteName: string = hasDownvoted;
     let addDownvote: number = 0;
-    console.log(hasDownvoted)
     if (hasUpvoted === '' || hasUpvoted === undefined) {
       upvoteName = "None Have Upvoted"
     } else {
@@ -147,7 +151,7 @@ const GameList : React.FC<gameListProps> = ({user}) : ReactElement => {
             <li key= {index}>
               <h3>{game.name}</h3>
               <p className="gameText">{"Upvotes: " + game.upvotes + "  "}
-              <button onClick={() => upvoteEntry(game.name, game.slug, (game.upvotes + 1), game.downvotes, game.metacritic, game.hasUpvoted!, game.hasDownvoted!, game.id!)} >Upvote</button></p>
+              <button onClick={() => upvoteEntry(game.name, game.slug, (game.upvotes), game.downvotes, game.metacritic, game.hasUpvoted!, game.hasDownvoted!, game.id!)} >Upvote</button></p>
               <p className="gameText">{"Downvotes: " + game.downvotes} <button onClick={() => downvoteEntry(game.name, game.slug, game.upvotes, (game.downvotes), game.metacritic, game.hasUpvoted!, game.hasDownvoted!, game.id!)} >Downvote</button></p>
               <p className="gameText">{"Metacritic Score: " + game.metacritic}</p>
             </li>
