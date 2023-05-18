@@ -3,7 +3,7 @@ import BaseModalWrapper from "./BaseModalWrapper";
 
 interface LoginArgs {
   password: string;
-  login: string;
+  email: string;
 }
 
 interface LoginModalProps {
@@ -20,18 +20,21 @@ export type LoginFunction = (args: LoginArgs) => Promise<void>;
 
 const LoginModal: React.FC<LoginModalProps> = ({loginError, isRegisterModalVisible, isModalVisible, onBackdropClick, onLoginRequested, toggleRegisterModal}) => {
 
-  const [ login, setLogin ] = useState('');
+  const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if(e.key === 'Enter') {
-      onLoginRequested({login, password});
+      onLoginRequested({email, password});
     }
   }
   const registerToggle = () => {
     toggleRegisterModal();
-    onBackdropClick();
   }
+
+  if(!isModalVisible){
+    return null;
+  } else {
 
   return (<BaseModalWrapper 
     onBackdropClick={onBackdropClick}
@@ -41,14 +44,15 @@ const LoginModal: React.FC<LoginModalProps> = ({loginError, isRegisterModalVisib
     message="Please log in"
     content={
       <>
-        <input type="email" placeholder="Email" value={login} onChange={e => setLogin(e.target.value)} onKeyDown={onKeyDown}/><br/>
-        <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} onKeyDown={onKeyDown} /><br/>
+        <input className="paddington" type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} onKeyDown={onKeyDown}/><br/>
+        <input className="paddington" type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} onKeyDown={onKeyDown} /><br/>
         {loginError && <div className="error">{loginError}</div>}
-        <button className="center" onClick={() => onLoginRequested({password, login})} >Login</button>
+        <button className="center" onClick={() => onLoginRequested({password, email})} >Login</button>
         <button onClick={() => registerToggle()}>Or Register</button>
       </>
     }
   />);
+  }
 }
 
 export default LoginModal;

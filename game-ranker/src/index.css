@@ -86,3 +86,14 @@ code {
   font-size: 13px;
   color: red;
 }
+
+.regParam {
+  color: #aaa;
+  font-size: 16px;
+  font-weight: 300px;
+  text-align: center;
+}
+
+.paddington {
+  padding: 0.75rem 0.5rem;
+}
