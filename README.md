@@ -1,18 +1,43 @@
-### Research and Planning Log
-#### Friday 4/28
-* 8:00 Setting Goals 
-    _What my MVP is, what are some major choices I am going to have to make, such as what API's I want to use to gather data, and what Languages I want to use._
-* 9:30 Researching API's
-    _IGDB and RAWG api's_
-* 11:00 Creating Database to store API Information using MySQL
-* 1:00 Researching Typescript For my Project (Reading through documentation/TypeScript Handbook)
-* 4:45 submitting work
+# _{GG Rankings}_
 
-#### Friday 5/5
-* 8:00 Researching Typescript
-* 4:30 Researching how to use Typescript with an ASP.Net application
-* 4:50 Figuring out how to set up file structure for a REACT application that uses Typescript.
-* 5:10 Used CRA to create a react app using a typescript template.
+#### By _**{Kai Clausen}**_
 
-#### Friday 5/12
-* 8:00 Looking at previous program structures/ Troubleshooting Internet
+#### _{An application for groups to figure out what they want to play}_
+
+## Technologies Used
+
+* _HTML_
+* _TypeScript_
+* _CSS_
+* _RAWG API_
+* _Firebase_
+* _Firestore_
+* _JavaScript_
+* _Create-React-App_
+
+## Description
+
+_{This application interfaces with RAWG's Api to pull information from their database based on a search string entered by the user, plus some behind the scenes parameters. Then users can add the games to the game list where they can choose to upvote or downvote list items. Each game is restricted to 1 upvote or downvote each. Also only the site admin can delete entries from the website. Created as my Capstone for Epicodus.}_
+
+## Setup/Installation Requirements
+
+_This application is already deployed at https://gamerankings-d45f4.web.app_
+
+* _This is a great place_
+* _to list setup instructions_
+* _in a simple_
+* _easy-to-understand_
+* _format_
+
+_{Leave nothing to chance! You want it to be easy for potential users, employers and collaborators to run your app. Do I need to run a server? How should I set up my databases? Is there other code this application depends on? We recommend deleting the project from your desktop, re-cloning the project from GitHub, and writing down all the steps necessary to get the project working again.}_
+
+## Known Bugs
+
+* _Any known issues_
+* _should go here_
+
+## License
+
+_{Let people know what to do if they run into any issues or have questions, ideas or concerns.  Encourage them to contact you or make a contribution to the code.}_
+
+Copyright (c) _date_ _author name(s)_
