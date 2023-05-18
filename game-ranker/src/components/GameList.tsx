@@ -63,7 +63,7 @@ const GameList : React.FC<gameListProps> = ({user}) : ReactElement => {
     return (
       <React.Fragment>
         <div className="toLeft">
-          <h2>Games to Consider</h2>
+          <h2 className="toCenter">Games to Consider</h2>
           <ul >
           {gameList.map((game,index) => (
             <li key= {index}>
@@ -82,7 +82,7 @@ const GameList : React.FC<gameListProps> = ({user}) : ReactElement => {
     return (
       <React.Fragment>
         <div className="toLeft">
-          <h2>Games to Consider</h2>
+          <h2 className="toCenter">Games to Consider</h2>
           <ul>
             {gameList.map((game,index) => (
               <li key= {index}>
