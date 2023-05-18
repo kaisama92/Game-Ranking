@@ -35,6 +35,7 @@ _(Please Note that you will need to set up an account with RAWG to gain access t
 ```cs 
   REACT_APP_API_KEY = YOUR_API_KEY
   REACT_APP_USER_ID = YOUR_REACT_APP_USER_ID
+
   # Firebase Environmentals
   REACT_APP_FIREBASE_API_KEY = YOUR_FIREBASE_API_KEY
   REACT_APP_FIREBASE_AUTH_DOMAIN = YOUR_FIREBASE_AUTH_DOMAIN
@@ -44,16 +45,21 @@ _(Please Note that you will need to set up an account with RAWG to gain access t
   REACT_APP_FIREBASE_APP_ID = YOUR_FIREBASE_APP_ID 
   ```
 
-* _Replace all sections startincg with with your own information as noted in the lessons._
+* _Replace all sections startincg with ```YOUR``` with your own information as noted in the lessons._
+* _The ```REACT_APP_USER_ID``` value will correspond with your uid that has been stored in your authentication db._
+* _To do that, run ```npm start``` and register an account. Firebase will auto generate the uid and store it._ 
+* _After that has been completed the application is completely functional_
 
+
+## Preview: 
+![Preview of Site](./game-ranker/public/GGRankingsPreview.png?raw=true "Title")
 
 ## Known Bugs
 
-* _Any known issues_
-* _should go here_
+* _No warning for nsfw entries from the search list_
 
 ## License
 
-_{Let people know what to do if they run into any issues or have questions, ideas or concerns.  Encourage them to contact you or make a contribution to the code.}_
+_MIT - If you come across any issues, feel free to fix them yourself, or contact Kai @ kaiclausen123@gmail.com_
 
-Copyright (c) _date_ _author name(s)_
+Copyright (c) _2023_ _Kai Clausen_
