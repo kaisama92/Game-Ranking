@@ -3,9 +3,11 @@ import {dbGameEntry} from "./NewGameEntry";
 import { collection, addDoc, onSnapshot, deleteDoc, doc, updateDoc } from "firebase/firestore";
 import db from "../firebase";
 
+interface gameListProps {
+  user: string
+}
 
-
-const GameList : React.FC = () : ReactElement => {
+const GameList : React.FC<gameListProps> = ({user}) : ReactElement => {
   const [gameList, setGameList] = useState<dbGameEntry[]>([])
 
   useEffect(() => {
@@ -57,24 +59,40 @@ const GameList : React.FC = () : ReactElement => {
     const gameRef = doc(db!, "games"!, gameToEdit.id!);
     await updateDoc(gameRef, gameToEdit);
   }
-
-
-  return (
-    <React.Fragment>
-      <ul>
-        {gameList.map((game,index) => (
-          <li key= {index}>
-            <h3>{game.name}</h3>
-            <p>{"Upvotes: " + game.upvotes + "  "}
-            <button onClick={() => upvoteOrDownvoteEntry(game.name, game.slug, (game.upvotes + 1), game.downvotes, game.metacritic, game.id!)} >Upvote</button></p>
-            <p>{"Downvotes: " + game.downvotes} <button onClick={() => upvoteOrDownvoteEntry(game.name, game.slug, game.upvotes, (game.downvotes + 1), game.metacritic, game.id!)} >Downvote</button></p>
-            <p>{"Metacritic Score: " + game.metacritic}</p>
-            <button onClick={() => deleteEntry(game.id!)} >Delete</button>
-          </li>
-        ))}
-      </ul>
-    </React.Fragment>
-  )
+  if (user !== "nfiZ9mjNwFYBEqcB7FRqNnvjx6j2") {
+    return (
+      <React.Fragment>
+        <ul>
+          {gameList.map((game,index) => (
+            <li key= {index}>
+              <h3>{game.name}</h3>
+              <p>{"Upvotes: " + game.upvotes + "  "}
+              <button onClick={() => upvoteOrDownvoteEntry(game.name, game.slug, (game.upvotes + 1), game.downvotes, game.metacritic, game.id!)} >Upvote</button></p>
+              <p>{"Downvotes: " + game.downvotes} <button onClick={() => upvoteOrDownvoteEntry(game.name, game.slug, game.upvotes, (game.downvotes + 1), game.metacritic, game.id!)} >Downvote</button></p>
+              <p>{"Metacritic Score: " + game.metacritic}</p>
+            </li>
+          ))}
+        </ul>
+      </React.Fragment>
+    )
+  } else {
+    return (
+      <React.Fragment>
+        <ul>
+          {gameList.map((game,index) => (
+            <li key= {index}>
+              <h3>{game.name}</h3>
+              <p>{"Upvotes: " + game.upvotes + "  "}
+              <button onClick={() => upvoteOrDownvoteEntry(game.name, game.slug, (game.upvotes + 1), game.downvotes, game.metacritic, game.id!)} >Upvote</button></p>
+              <p>{"Downvotes: " + game.downvotes} <button onClick={() => upvoteOrDownvoteEntry(game.name, game.slug, game.upvotes, (game.downvotes + 1), game.metacritic, game.id!)} >Downvote</button></p>
+              <p>{"Metacritic Score: " + game.metacritic}</p>
+              <button onClick={() => deleteEntry(game.id!)} >Delete</button>
+            </li>
+          ))}
+        </ul>
+      </React.Fragment>
+    )
+  }
 }
 
 export default GameList;

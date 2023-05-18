@@ -31,7 +31,8 @@ const ListOfGames: React.FC = () : ReactElement => {
   }
 
   const toggleRegisterModal = () => {
-    setIsRegisterModalVisible(!isRegisterModalVisible);
+    console.log(isModalVisible);
+    setIsRegisterModalVisible(true);
 
   }
 
@@ -42,7 +43,7 @@ const ListOfGames: React.FC = () : ReactElement => {
 
   const onLoginRequest : LoginFunction = async ({password, email}) => {
     signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
+        .then(() => {
           onBackdropClick();
         })
         .catch((error) => {
@@ -57,7 +58,7 @@ const ListOfGames: React.FC = () : ReactElement => {
     if (email !== undefined && email !== null && password !== undefined && password !== null) {
       if(regex.test(password)) {
         createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
+            .then(() => {
               onBackdropClick();
             })
             .catch((error) => {
@@ -71,34 +72,35 @@ const ListOfGames: React.FC = () : ReactElement => {
     }
   }
 
-  onAuthStateChanged(auth, (user) => {
-    if (user){
-      setUser(user.uid);
-    } else {
-      setUser('');
-    }
-  });
+  useEffect(() => {
+    onAuthStateChanged(auth,(user) => {
+      if(user) {
+        setUser(user.uid);
+      } else {
+        setUser('');
+      }
+    })
+  }, [isModalVisible])
 
   const logOut = () => {
     signOut(auth);
   }
-
-  // useEffect(() => {
-  //   if (!isRegisterModalVisible) {
-  //     setModalVisible(<LoginModal loginError={loginError} onBackdropClick={onBackdropClick} onLoginRequested={onLoginRequest} isModalVisible={isModalVisible} isRegisterModalVisible={isRegisterModalVisible} toggleRegisterModal={toggleRegisterModal}/> 
-  //     )
-  //   } else {
-  //     setModalVisible(<RegisterModal registerError={registerError} onBackdropClick={onBackdropClick} onRegisterRequested={onRegisterRequest} isRegisterModalVisible={isRegisterModalVisible}/>)
-  //   }
-  // }, [isRegisterModalVisible])
+  
+  useEffect(() => {
+    if (!isRegisterModalVisible) {
+      setModalVisible(<LoginModal loginError={loginError} onBackdropClick={onBackdropClick} onLoginRequested={onLoginRequest} isModalVisible={isModalVisible} isRegisterModalVisible={isRegisterModalVisible} toggleRegisterModal={toggleRegisterModal}/> 
+      )
+    } else {
+      setModalVisible(<RegisterModal registerError={registerError} onBackdropClick={onBackdropClick} onRegisterRequested={onRegisterRequest} isRegisterModalVisible={isRegisterModalVisible}/>)
+    }
+  }, [isRegisterModalVisible, isModalVisible])
 
   if (user !== '') {
     return (
       <React.Fragment>
-        <p>{user}</p>
         <button onClick={() => logOut()}>Sign Out</button>
         {modalVisible}
-        <GameList />
+        <GameList user={user}/>
         <SearchForGame/>
       </React.Fragment>
     )
@@ -106,8 +108,7 @@ const ListOfGames: React.FC = () : ReactElement => {
     return (
       <React.Fragment>
         <button onClick={toggleModal}>Sign In</button>
-        <LoginModal loginError={loginError} onBackdropClick={onBackdropClick} onLoginRequested={onLoginRequest} isModalVisible={isModalVisible} isRegisterModalVisible={isRegisterModalVisible} toggleRegisterModal={toggleRegisterModal}/>
-        <RegisterModal registerError={registerError} onBackdropClick={onBackdropClick} onRegisterRequested={onRegisterRequest} isRegisterModalVisible={isRegisterModalVisible}/>
+        {modalVisible}
       </React.Fragment>
     )
   }

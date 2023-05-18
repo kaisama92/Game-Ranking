@@ -26,9 +26,6 @@ const RegisterModal: React.FC<RegisterModalProps> = ({onBackdropClick, onRegiste
     }
   }
 
-  if (!isRegisterModalVisible){
-    return null;
-  } else {
     return (<BaseModalWrapper 
       onBackdropClick={onBackdropClick}
       isRegisterModalVisible={isRegisterModalVisible}
@@ -45,7 +42,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({onBackdropClick, onRegiste
         </>
       }
     />)
-  }
+  
 }
 
 export default RegisterModal

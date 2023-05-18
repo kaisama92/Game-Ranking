@@ -11,6 +11,9 @@ interface BaseModalWrapperProps {
 }
 
 const BaseModalWrapper: React.FC<BaseModalWrapperProps> = ({content, isRegisterModalVisible, onBackdropClick, isModalVisible, header, message}) => {
+  if (!isModalVisible && !isRegisterModalVisible) {
+    return null;
+  } else {
   return (<Modal onBackdropClick={onBackdropClick}>
     <h3 className="desktopModalContainer" >
       <p className="modalInfo">{header}</p>
@@ -18,6 +21,7 @@ const BaseModalWrapper: React.FC<BaseModalWrapperProps> = ({content, isRegisterM
       {content}
     </h3>
   </Modal>);
+  }
 }
 
 export default BaseModalWrapper;

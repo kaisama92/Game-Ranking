@@ -32,10 +32,6 @@ const LoginModal: React.FC<LoginModalProps> = ({loginError, isRegisterModalVisib
     toggleRegisterModal();
   }
 
-  if(!isModalVisible){
-    return null;
-  } else {
-
   return (<BaseModalWrapper 
     onBackdropClick={onBackdropClick}
     isModalVisible={isModalVisible}
@@ -52,7 +48,7 @@ const LoginModal: React.FC<LoginModalProps> = ({loginError, isRegisterModalVisib
       </>
     }
   />);
-  }
+  
 }
 
 export default LoginModal;
