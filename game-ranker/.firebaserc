@@ -1,5 +1,11 @@
 {
   "projects": {
     "default": "gamerankings-d45f4"
+  },
+  "targets": {},
+  "etags": {
+    "gamerankings-d45f4": {
+      "extensionInstances": {}
+    }
   }
 }
