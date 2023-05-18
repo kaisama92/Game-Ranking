@@ -103,13 +103,13 @@ const ListOfGames: React.FC = () : ReactElement => {
         </div>
         {modalVisible}
         <GameList user={user}/>
-        <SearchForGame/>
+        <SearchForGame user={user}/>
       </React.Fragment>
     )
   } else {
     return (
       <React.Fragment>
-        <button onClick={toggleModal}>Sign In</button>
+        <button className="signIn" onClick={toggleModal}>Sign In</button>
         {modalVisible}
       </React.Fragment>
     )
