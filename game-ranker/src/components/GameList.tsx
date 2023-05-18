@@ -1,5 +1,5 @@
 import React, { ReactElement, useEffect, useState } from "react";
-import {dbGameEntry} from "./NewGameEntry";
+import {dbGameEntry} from "./Interfaces";
 import { collection, addDoc, onSnapshot, deleteDoc, doc, updateDoc } from "firebase/firestore";
 import db from "../firebase";
 
