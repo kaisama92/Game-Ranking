@@ -6,7 +6,9 @@ export interface dbGameEntry {
   slug: string
   upvotes: number
   downvotes: number
-  metacritic: number
+  metacritic: number | string
+  hasUpvoted?: string
+  hasDownvoted?: string
   id?: string
 }
 
@@ -14,4 +16,8 @@ export interface searchFor {
   name: string;
   slug: string;
   metacritic: number;
+}
+
+export interface searchProps {
+  user: string;
 }
