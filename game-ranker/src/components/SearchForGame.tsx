@@ -40,20 +40,22 @@ const SearchForGame: React.FC = (): ReactElement => {
 
   return (
     <React.Fragment>
-      <form onSubmit={handleFormSubmission}>
-        <input 
-          type="text"
-          name="search"
-          placeholder="Search For Game Here"/>
-        <button type="submit">Search</button>
-      </form>
-      <ol>{searchList.map((game, index) => (
-          <li key={index}>
-            <h3>{game.name}</h3>
-            <button onClick={() => addGameToList(game.name, game.slug, game.metacritic)}>Add To List</button>
-          </li>
-        ))}
-      </ol>
+      <div className="toRight">
+        <form onSubmit={handleFormSubmission}>
+          <input 
+            type="text"
+            name="search"
+            placeholder="Search For Game Here"/>
+          <button type="submit">Search</button>
+        </form>
+        <ol>{searchList.map((game, index) => (
+            <li key={index}>
+              <h3>{game.name}</h3>
+              <button onClick={() => addGameToList(game.name, game.slug, game.metacritic)}>Add To List</button>
+            </li>
+          ))}
+        </ol>
+      </div>
     </React.Fragment>
   )
 }

@@ -98,7 +98,9 @@ const ListOfGames: React.FC = () : ReactElement => {
   if (user !== '') {
     return (
       <React.Fragment>
-        <button onClick={() => logOut()}>Sign Out</button>
+        <div className="signOut">
+          <button onClick={() => logOut()}>Sign Out</button>
+        </div>
         {modalVisible}
         <GameList user={user}/>
         <SearchForGame/>
