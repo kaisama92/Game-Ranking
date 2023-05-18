@@ -140,7 +140,7 @@ const GameList : React.FC<gameListProps> = ({user}) : ReactElement => {
 
 }
 
-  if (user !== "nfiZ9mjNwFYBEqcB7FRqNnvjx6j2") {
+  if (user !== process.env.REACT_APP_USER_ID) {
     return (
       <React.Fragment>
         <div className="toLeft">

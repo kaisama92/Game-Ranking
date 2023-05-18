@@ -1,8 +1,8 @@
-# _{GG Rankings}_
+# _GG Rankings_
 
-#### By _**{Kai Clausen}**_
+#### By _**Kai Clausen**_
 
-#### _{An application for groups to figure out what they want to play}_
+#### _An application for groups to figure out what they want to play_
 
 ## Technologies Used
 
@@ -17,19 +17,35 @@
 
 ## Description
 
-_{This application interfaces with RAWG's Api to pull information from their database based on a search string entered by the user, plus some behind the scenes parameters. Then users can add the games to the game list where they can choose to upvote or downvote list items. Each game is restricted to 1 upvote or downvote each. Also only the site admin can delete entries from the website. Created as my Capstone for Epicodus.}_
+_This application interfaces with RAWG's Api to pull information from their database based on a search string entered by the user, plus some behind the scenes parameters. Then users can add the games to the game list where they can choose to upvote or downvote list items. Each game is restricted to 1 upvote or downvote each. Also only the site admin can delete entries from the website. Created as my Capstone for Epicodus._
 
 ## Setup/Installation Requirements
 
-_This application is already deployed at https://gamerankings-d45f4.web.app_
+_This application is deployed at https://gamerankings-d45f4.web.app_
 
-* _This is a great place_
-* _to list setup instructions_
-* _in a simple_
-* _easy-to-understand_
-* _format_
+_Alternatively you can set this project up on your computer by following these instructions:_
+_(Please Note that you will need to set up an account with RAWG to gain access to an API key. You will also need to set up a firebase application. Follow the instructions at https://www.learnhowtoprogram.com/react. Specifically lessons 7, 9, 11, 21, 22 will give you a great place to start.)_
 
-_{Leave nothing to chance! You want it to be easy for potential users, employers and collaborators to run your app. Do I need to run a server? How should I set up my databases? Is there other code this application depends on? We recommend deleting the project from your desktop, re-cloning the project from GitHub, and writing down all the steps necessary to get the project working again.}_
+* _Make sure you have your api key and have a firebase application set up_
+* _Clone this repository to you computer_
+* _In the ```game-ranker``` directory, enter the command ```npm install```_
+* _Then enter the command ```npm run build```_
+* _In the same directory create a file called .env_
+* _In .env you will want to enter the following :_
+```cs 
+  REACT_APP_API_KEY = YOUR_API_KEY
+  REACT_APP_USER_ID = YOUR_REACT_APP_USER_ID
+  # Firebase Environmentals
+  REACT_APP_FIREBASE_API_KEY = YOUR_FIREBASE_API_KEY
+  REACT_APP_FIREBASE_AUTH_DOMAIN = YOUR_FIREBASE_AUTH_DOMAIN
+  REACT_APP_FIREBASE_PROJECT_ID = YOUR_FIREBASE_PROJECT_ID
+  REACT_APP_FIREBASE_STORAGE_BUCKET = YOUR_FIREBASE_STORAGE_BUCKET
+  REACT_APP_FIREBASE_MESSAGING_SENDER_ID = YOUR_FIREBASE_MESSAGING_SENDER_ID 
+  REACT_APP_FIREBASE_APP_ID = YOUR_FIREBASE_APP_ID 
+  ```
+
+* _Replace all sections startincg with with your own information as noted in the lessons._
+
 
 ## Known Bugs
 
